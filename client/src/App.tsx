@@ -29,6 +29,14 @@ function App() {
       <h1>Books Client</h1>
       <button onClick={handleLogin}>Login</button>
       <button onClick={handleGetBooks}>Get Books</button>
+      <button
+        onClick={async () => {
+          await authService.logout();
+          console.log("Logged out successfully");
+        }}
+      >
+        Logout
+      </button>
     </div>
   );
 }
