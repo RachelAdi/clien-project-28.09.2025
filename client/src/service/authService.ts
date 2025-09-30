@@ -7,6 +7,8 @@ interface LoginResponse {
 const authService = {
   login: async (username: string, password: string): Promise<LoginResponse> => {
     const response = await http.post("/books/login", { username, password });
+    const token = response.data.token;
+    localStorage.setItem("token", token);
     return response.data;
   },
   logout: async () => {
@@ -16,6 +18,6 @@ const authService = {
     await http.post("/books/logout", { token });
 
     localStorage.removeItem("token");
-  }
+  },
 };
 export default authService;
